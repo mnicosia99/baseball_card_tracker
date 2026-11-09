@@ -1,0 +1,7 @@
+**/node_modules
+**/dist
+**/.angular
+**/.DS_Store
+**/*.log
+deploy/.env
+deploy/data

@@ -1,0 +1,162 @@
+<div class="site-shell">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="brand" aria-label="Topps Archive home">
+        <span class="brand-mark">T<span class="mark-ball">●</span></span>
+        <span class="brand-text"><strong>THE TOPPS ARCHIVE</strong><small>BASEBALL CARD COLLECTION</small></span>
+      </a>
+      <div class="header-right"><span class="header-era">EST. 1948 <i></i> THE CLASSIC YEARS</span><span class="header-pill"><span class="pulse-dot"></span> CATALOG VIEWER</span></div>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> AN ARCHIVE OF THE GAME</div>
+        <h1 id="page-title">Every card tells<br><em>a story.</em></h1>
+        <p>Discover the golden years of Topps baseball. Explore players, teams and the small printing differences that make every card unique.</p>
+        <div class="era-tags"><span>1948 MAGIC PHOTOS</span><span>1951 FIRST ISSUES</span><span>1952—1983 FLAGSHIP</span></div>
+      </div>
+      <div class="hero-decoration" aria-hidden="true">
+        <div class="hero-card hero-card-back"><span class="hero-graphic">TOPPS</span><span class="hero-graphic-sub">BASEBALL ARCHIVE</span></div>
+        <div class="hero-card hero-card-front"><span class="illustration-top">THE COLLECTOR'S EDITION</span><span class="vintage-ball"><span class="ball-stitch left"></span><span class="ball-stitch right"></span></span><span class="illustration-bottom">1948 <span>★</span> 1983</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-strip" aria-label="Catalog information">
+    <div class="stats-inner">
+      <div class="stat"><strong>{{ formatNumber(meta()?.counts?.total) }}</strong><span>CATALOG ENTRIES</span></div>
+      <span class="stat-divider"></span>
+      <div class="stat"><strong>{{ meta()?.sets?.length ?? '—' }}</strong><span>TOPPS ISSUES</span></div>
+      <span class="stat-divider"></span>
+      <div class="stat"><strong>1948–83</strong><span>COLLECTION ERA</span></div>
+      <span class="stat-divider"></span>
+      <div class="stat"><strong>{{ formatNumber(meta()?.counts?.identified) }}</strong><span>IDENTIFIED ENTRIES</span></div>
+    </div>
+  </section>
+
+  <main class="page-main" id="catalog">
+    <div class="section-heading"><div><div class="eyebrow eyebrow-dark">THE COLLECTION</div><h2>Browse the archive<span class="heading-dot">.</span></h2><p>Find a favorite player, compare print variations, or explore an entire year.</p></div><div class="small-stamp">THE GAME IN CARDBOARD <span>✦</span> 1948—1983</div></div>
+
+    <button class="filter-mobile-toggle" type="button" (click)="filtersOpen.set(!filtersOpen())" [attr.aria-expanded]="filtersOpen()">
+      <span>☷ &nbsp; Search & filters</span><span>{{ activeFilterCount() ? activeFilterCount() + ' active' : 'Show filters' }} &nbsp; {{ filtersOpen() ? '−' : '+' }}</span>
+    </button>
+
+    <div class="catalog-layout">
+      <aside class="filter-panel" [class.mobile-open]="filtersOpen()" aria-label="Card search filters">
+        <div class="panel-top"><div><span class="filter-icon">✥</span> REFINE YOUR SEARCH</div><button class="clear-button" type="button" (click)="clearFilters()">Reset all</button></div>
+
+        <div class="filter-group">
+          <label for="player-search" class="filter-label">Player or card number</label>
+          <div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="m16 16 5 5"></path></svg><input id="player-search" type="search" placeholder="Try Mickey Mantle…" autocomplete="off" [value]="searchDraft()" (input)="inputSearch($event)"></div>
+        </div>
+
+        <div class="filter-group">
+          <label for="year-filter" class="filter-label">Year</label>
+          <select id="year-filter" [value]="filters().year ?? ''" (change)="inputYear($event)"><option value="">All years (1948–1983)</option>@for (year of meta()?.years ?? []; track year) {<option [value]="year">{{ year }}</option>}</select>
+        </div>
+
+        <div class="filter-group">
+          <label for="team-filter" class="filter-label">Team</label>
+          <select id="team-filter" [value]="filters().team" (change)="inputTeam($event)"><option value="">All teams</option>@for (team of meta()?.teams ?? []; track team) {<option [value]="team">{{ team }}</option>}</select>
+        </div>
+
+        <div class="filter-group">
+          <label for="set-filter" class="filter-label">Set / issue</label>
+          <select id="set-filter" [value]="filters().setCode" (change)="inputSet($event)"><option value="">All sets</option>@for (set of filteredSets(); track set.year + set.code) {<option [value]="set.year + ':' + set.code">{{ set.year }} · {{ set.name }}</option>}</select>
+        </div>
+
+        <div class="filter-group">
+          <label for="ownership-filter" class="filter-label">Ownership</label>
+          <select id="ownership-filter" [value]="filters().ownership" (change)="inputOwnership($event)"><option value="either">Either</option><option value="owned">Owned</option><option value="not-owned">Not Owned</option></select>
+        </div>
+
+        <div class="filter-line"></div>
+        <div class="filter-group badge-filter-group"><div class="filter-label">Card distinctions</div>
+          <label class="toggle-row"><span class="toggle-descriptor"><span class="small-square gold">★</span><span>Rookie cards</span></span><input type="checkbox" [checked]="filters().rookieOnly" (change)="toggleFlag('rookieOnly', $event)"><span class="toggle-switch" aria-hidden="true"></span></label>
+          <label class="toggle-row"><span class="toggle-descriptor"><span class="small-square green">✦</span><span>Hall of Fame</span></span><input type="checkbox" [checked]="filters().hallOnly" (change)="toggleFlag('hallOnly', $event)"><span class="toggle-switch" aria-hidden="true"></span></label>
+          <label class="toggle-row"><span class="toggle-descriptor"><span class="small-square dark">▧</span><span>With card scans</span></span><input type="checkbox" [checked]="filters().imagesOnly" (change)="toggleFlag('imagesOnly', $event)"><span class="toggle-switch" aria-hidden="true"></span></label>
+        </div>
+
+        <div class="filter-note"><span class="note-symbol">ⓘ</span><span>Rookie / Hall of Fame statuses are shown only when verified in the catalog. A “?” means not yet researched.</span></div>
+        <div class="sidebar-footer">TOPPS BASEBALL <span>·</span> A COLLECTOR'S REFERENCE</div>
+      </aside>
+
+      <section class="results-section" aria-live="polite">
+        <div class="results-toolbar"><div><div class="results-kicker">THE CARD GALLERY</div><h3>{{ filters().year ?? 'All years' }} <span class="result-sub">/ {{ formatNumber(results()?.total) }} entries</span></h3></div><div class="results-controls"><label for="sort-filter">Sort</label><select id="sort-filter" [value]="filters().sort" (change)="inputSort($event)"><option value="year-asc">Oldest first</option><option value="year-desc">Newest first</option><option value="number-asc">Card number</option><option value="player-asc">Player A–Z</option></select></div></div>
+
+        @if (activeFilterCount()) {
+          <div class="active-chips"><span class="chips-label">FILTERING BY</span>
+            @if (filters().search) {<span class="chip">“{{ filters().search }}”</span>}
+            @if (filters().year !== null) {<span class="chip">{{ filters().year }}</span>}
+            @if (filters().team) {<span class="chip">{{ filters().team }}</span>}
+            @if (filters().setCode) {<span class="chip">Selected issue</span>}
+            @if (filters().rookieOnly) {<span class="chip">Rookies</span>}
+            @if (filters().hallOnly) {<span class="chip">Hall of Fame</span>}
+            @if (filters().imagesOnly) {<span class="chip">With scans</span>}
+            @if (filters().ownership !== 'either') {<span class="chip">{{ filters().ownership === 'owned' ? 'Owned' : 'Not Owned' }}</span>}
+            <button type="button" class="chip-reset" (click)="clearFilters()">Clear all ×</button>
+          </div>
+        }
+
+        @if (error()) {<div class="error-banner" role="alert">{{ error() }} <button type="button" (click)="clearFilters()">Retry</button></div>}
+
+        @if (loading()) {
+          <div class="gallery-grid" aria-label="Loading cards">@for (item of [1,2,3,4,5,6]; track item) {<div class="card skeleton-card"><div class="skeleton-picture"></div><div class="skeleton-text"></div><div class="skeleton-text small"></div></div>}</div>
+        } @else if ((results()?.items?.length ?? 0) === 0) {
+          <div class="empty-results"><div class="empty-icon">⌕</div><h3>No matching cards</h3><p>Try a different player, year or team. Some entries are still missing researched player details.</p><button type="button" class="primary-button" (click)="clearFilters()">View all cards</button></div>
+        } @else {
+          <div class="gallery-grid">
+            @for (card of results()?.items ?? []; track card.key) {
+              <article class="card">
+                <button class="card-picture" type="button" (click)="openCard(card)" [attr.aria-label]="'Open large image for ' + label(card)">
+                  @if (pictureAvailable(card, 'front')) {
+                    <img class="scan-image" [src]="imageUrl(card, 'front')" [alt]="label(card) + ' card front'" loading="lazy" (error)="markImageFailed(card.key, 'front')">
+                    @if (!card.images.frontVerified) {<span class="unverified-image">UNVERIFIED IMAGE</span>}
+                  } @else {
+                    <span class="card-placeholder" aria-hidden="true"><span class="placeholder-head">TOPPS <i>★</i> BASEBALL</span><span class="placeholder-ball"><span class="stitch stitch-left"></span><span class="stitch stitch-right"></span></span><span class="placeholder-number">{{ card.year }} · #{{ card.cardNumber ?? '—' }}</span><span class="placeholder-caption">SCAN NOT YET AVAILABLE</span></span>
+                  }
+                  <span class="picture-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"></circle><path d="M14.5 14.5 20 20M10 7v6M7 10h6"></path></svg><span>VIEW CARD</span></span>
+                </button>
+                <div class="card-body"><div class="card-meta"><span class="card-year">{{ card.year }} TOPPS</span><span class="card-number">#{{ card.cardNumber ?? '—' }}</span></div>
+                  <h4 [title]="label(card)">{{ label(card) }}</h4>
+                  <p class="card-team">{{ card.team ?? 'Team not yet identified' }}</p>
+                  <label class="ownership-row"><input type="checkbox" [checked]="card.owns" [disabled]="savingOwnership()[card.key]" (change)="setCardOwnership(card, $event)"><span>Owned</span></label>
+                  <div class="card-rule"></div>
+                  <div class="card-status-row"><div class="verified-flag" [class.is-yes]="card.isRookie === true" [class.is-unknown]="card.isRookie === null" [title]="card.isRookie === null ? 'Not yet verified' : ''"><span class="status-box">{{ card.isRookie === true ? '✓' : (card.isRookie === null ? '?' : '') }}</span><span>ROOKIE</span></div><div class="verified-flag" [class.is-yes]="card.isHallOfFame === true" [class.is-unknown]="card.isHallOfFame === null" [title]="card.isHallOfFame === null ? 'Not yet verified' : ''"><span class="status-box">{{ card.isHallOfFame === true ? '✓' : (card.isHallOfFame === null ? '?' : '') }}</span><span>HALL OF FAME</span></div></div>
+                  @if (card.variationLabel && card.variationLabel !== 'Standard / not differentiated') {<div class="variation-pill" [title]="card.variationFamily ?? ''"><span>↳</span> {{ card.variationLabel }}</div>}
+                  @if (card.variationCount > 1) {<div class="variation-count">{{ card.variationCount }} cataloged print states for this card</div>}
+                </div>
+              </article>
+            }
+          </div>
+          <div class="page-navigation"><span>Showing <strong>{{ shownFrom() }}–{{ shownTo() }}</strong> of <strong>{{ formatNumber(results()?.total) }}</strong> cards</span><div class="page-control"><button type="button" (click)="goToPage(filters().page - 1)" [disabled]="filters().page <= 1" aria-label="Previous page">←</button><span>{{ filters().page }} <i>/</i> {{ results()?.pageCount }}</span><button type="button" (click)="goToPage(filters().page + 1)" [disabled]="filters().page >= (results()?.pageCount ?? 0)" aria-label="Next page">→</button></div><label class="page-size">Per page <select [value]="filters().pageSize" (change)="inputPageSize($event)"><option [value]="12">12</option><option [value]="24">24</option><option [value]="48">48</option></select></label></div>
+        }
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><span>THE TOPPS ARCHIVE <span class="footer-sep">✦</span> 1948—1983</span><span>Historical catalog, not a sales or pricing service. Data and image coverage remain incomplete.</span></footer>
+
+  @if (activeCard(); as card) {
+    <div class="viewer-backdrop" (click)="onBackdropClick($event)" role="presentation">
+      <section class="viewer" role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+        <header class="viewer-top"><div><div class="results-kicker">THE CARD ARCHIVE / {{ card.year }}</div><h2 id="viewer-title">{{ label(card) }}</h2><p>{{ card.year }} {{ card.setName }} <span>·</span> #{{ card.cardNumber ?? 'unnumbered' }}</p></div><button class="viewer-close" type="button" aria-label="Close image viewer" (click)="closeCard()">×</button></header>
+        <div class="viewer-content"><div class="viewer-media"><div class="viewer-switch" role="group" aria-label="Card image side"><button type="button" [class.active]="activeSide() === 'front'" (click)="setSide('front')">FRONT</button><button type="button" [class.active]="activeSide() === 'back'" (click)="setSide('back')">BACK</button></div>
+          <div class="viewer-stage">
+            @if (pictureAvailable(card, activeSide())) {
+              <img [src]="imageUrl(card, activeSide())" [alt]="label(card) + ' card ' + activeSide()" (error)="markImageFailed(card.key, activeSide())">
+              @if (!isImageVerified(card, activeSide())) {<div class="viewer-image-note">Image URL has not yet been independently verified.</div>}
+            } @else {
+              <div class="viewer-placeholder"><span class="large-placeholder-ball">⚾</span><strong>{{ activeSide() === 'front' ? 'Front scan unavailable' : 'Back scan unavailable' }}</strong><p>When a verified image URL is added to this record, the full-size card image will appear here automatically.</p></div>
+            }
+          </div>
+        </div><aside class="viewer-information"><span class="detail-eyebrow">CARD DETAILS</span><dl><div><dt>Player / title</dt><dd>{{ label(card) }}</dd></div><div><dt>Team</dt><dd>{{ card.team ?? 'Not identified' }}</dd></div><div><dt>Set</dt><dd>{{ card.year }} {{ card.setName }}</dd></div><div><dt>Card number</dt><dd>{{ card.cardNumber ?? 'Unnumbered' }}</dd></div><div><dt>Variation</dt><dd>{{ card.variationLabel ?? 'Not categorized' }}</dd></div><div><dt>Rookie</dt><dd>{{ card.isRookie === null ? 'Not verified' : card.isRookie ? 'Yes' : 'No' }}</dd></div><div><dt>Hall of Fame</dt><dd>{{ card.isHallOfFame === null ? 'Not verified' : card.isHallOfFame ? 'Yes' : 'No' }}</dd></div><div><dt>Image status</dt><dd>{{ isImageVerified(card, activeSide()) ? 'Source URL verified in dataset' : 'Unverified / missing' }}</dd></div></dl>
+          @if (card.sourcePage) {<a class="reference-link" [href]="card.sourcePage" target="_blank" rel="noopener noreferrer">Open catalog reference ↗</a>}
+          <p class="viewer-disclaimer">Reference links are not necessarily direct card scans. Only use image URLs you have permission to display.</p>
+        </aside></div>
+      </section>
+    </div>
+  }
+</div>
