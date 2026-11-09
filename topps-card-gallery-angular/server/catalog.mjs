@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const DATA_DIRECTORY = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data');
-const DEFAULT_CARDSIGHT_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../Data-queries/cardsight_cards_named_attributes.json');
+const DEFAULT_CARDSIGHT_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data/cardsight_cards_named_attributes.json');
 let ownershipWriteQueue = Promise.resolve();
 const SORT_NAMES = new Set(['year-asc', 'year-desc', 'number-asc', 'player-asc']);
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

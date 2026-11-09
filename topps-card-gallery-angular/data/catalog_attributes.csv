@@ -1,0 +1,52 @@
+id,name,shortName,description,cardCount
+31f5cb85-cda2-45d4-977e-4cc4db9b5f5d,Anaheim Angels,MLB-ANA,Organization: Anaheim Angels,4545
+61f5b7fd-997c-472b-b638-1333dab761b2,Arizona Diamondbacks,MLB-ARI,Organization: Arizona Diamondbacks,18163
+a53f3302-e3ea-401a-8681-3dea74bae8d5,Athletics,MLB-ATH,Organization: Athletics (No City),1683
+a0d587b2-c20c-48af-821f-64a9dce1c67b,Atlanta Braves,MLB-ATL,Organization: Atlanta Braves,38448
+f9aee6a2-6ca7-41b9-b99d-8e8a43ed2887,Baltimore Orioles,MLB-BAL ,Organization: Baltimore Orioles,30869
+e9c672c3-78f6-4553-bcb4-463e5d845129,Boston Braves,MLB-BBR,Organization: Boston Braves,503
+12665dfd-e1f1-4613-b59d-231a67cbc0ab,Boston Red Sox,MLB-BOS,Organization: Boston Red Sox,43985
+b6a67fd7-8f30-4240-afb5-efc6b62beb86,Brooklyn Dodgers,MLB-BRK,Organization: Brooklyn Dodgers,4301
+99e8403a-0da2-47f0-8628-8bbf4841d99c,California Angels,MLB-CAL,Organization: California Angels,4086
+03fc8fab-9ed3-4f24-8cb0-f188d6d58f15,Chicago Cubs,MLB-CHI,Organization: Chicago Cubs,34661
+7b7d25d4-2e8e-47d6-a711-93d6128b0852,Chicago White Sox,MLB-SOX,Organization: Chicago White Sox,27726
+f28d4d12-f303-4b45-af61-7bafc1f47108,Cincinnati Redlegs,MLB-CRL,Organization: Cincinnati Redlegs,221
+67eaee53-83fb-41a0-91e4-3396f9b2f764,Cincinnati Reds,MLB-CIN,Organization: Cincinnati Reds,30241
+4f4fc17e-ecab-4037-baef-8908eab4c89e,Cleveland Guardians,MLB-CLG,Organization: Cleveland Guardians,4306
+19fc4c37-3b66-474c-a49c-b8070d6232d8,Cleveland Indians,MLB-CLE,Organization: Cleveland Indians,21470
+9248bf9c-735d-494c-b3be-d845e8ed28e0,Colorado Rockies,MLB-COL,Organization: Colorado Rockies,19033
+5336b346-c309-4e67-816e-d03d38b99754,Detroit Tigers,MLB-DET,Organization: Detroit Tigers,26769
+611afd27-3ebe-40d5-8c95-34c54963d5bc,Florida Marlins,MLB-FLA,Organization: Florida Marlins,8719
+57742f6f-1fc8-44ea-adee-e5b18659da44,Homestead Grays,MLB-HOM ,Organization: Homestead Grays,166
+821121b0-d008-4f97-a430-eba41cb0aa68,Houston Astros,MLB-HOU,Organization: Houston Astros,28218
+7590eaaf-1a7d-4e15-b157-3c29f8c82108,Houston Colt .45s,MLB-H45,Organization: Houston Colt .45s,222
+2e47a562-8827-41e3-a985-4a796cb7701b,Kansas City Athletics,MLB-KCA,Organization: Kansas City Athletics,782
+6e85377f-dfb6-49a3-be5c-fc151283a043,Kansas City Royals,MLB-KCR,Organization: Kansas City Royals,20371
+bbfc5165-bff8-4f75-953b-23a23e6bc671,Los Angeles Angels,MLB-LAA,Organization: Los Angeles Angels,19374
+ba3b309a-46bc-426e-a89b-4d265b036146,Los Angeles Dodgers,MLB-LAD,Organization: Los Angeles Dodgers,35463
+6858e1f4-34dd-4810-beef-3f4b5d174456,Miami Marlins,MLB-MIA,Organization: Miami Marlins,9825
+7d3f52a8-a4cf-425c-accf-7990c5d4515f,Milwaukee Braves,MLB-MBR ,Organization: Milwaukee Braves,2180
+b6e26cc3-2dd6-4183-9153-8a2f6d8309db,Milwaukee Brewers,MLB-MIL,Organization: Milwaukee Brewers,21747
+d7857ff2-fac8-4384-bec5-4b49b15e1115,Minnesota Twins,MLB-MIN ,Organization: Minnesota Twins,23362
+e09bddbf-6acb-450a-a5df-6d7565d581d6,Montreal Expos,MLB-MON,Organization: Montreal Expos,8325
+58c98a1e-1306-4282-af50-82de673e10d9,New York Giants,MLB-NYG,Organization: New York Giants,3781
+019e75e0-4fbb-459b-8b80-60974dfceaec,New York Highlanders,MLB-NYH,Organization: New York Highlanders,55
+533d5ef0-b21a-4204-8126-12431989e217,New York Mets,MLB-NYM,Organization: New York Mets,33285
+4340b923-e182-4015-b56a-fbfbd8b0f920,New York Yankees,MLB-NYY,Organization: New York Yankees,77002
+6a0ec755-e060-4d05-860e-9ebd43ce293d,Oakland Athletics,MLB-OAK,Organization: Oakland Athletics,23191
+fceffe54-7b98-44a7-ad87-1c23f1df99bb,Philadelphia Athletics,MLB-PHA,Organization: Philadelphia Athletics,1221
+989afbed-999a-4697-ac15-bf14e04022b4,Philadelphia Phillies,MLB-PHL,Organization: Philadelphia Phillies,29674
+b323facd-4426-407d-a03c-abfa0d7998c5,Pittsburgh Pirates,MLB-PIT,Organization: Pittsburgh Pirates,23791
+8d40e29b-2fe1-4d62-836c-49f03c0ad902,San Diego Padres,MLB-SAN,Organization: San Diego Padres,23852
+0ed3fd03-93c1-4e3b-98aa-8d11624a7491,San Francisco Giants,MLB-SFG,Organization: San Francisco Giants,25763
+f1618d62-901b-4bbc-bb81-fc8c78ddbeb8,Seattle Mariners,MLB-SEA,Organization: Seattle Mariners,28929
+26952f5a-5855-4d0c-84a2-32286fb3c45f,Seattle Pilots,MLB-SPI,Organization: Seattle Pilots,121
+c550c75b-97bb-4bff-ba28-0507b12fd367,St. Louis Browns,MLB-SLB,Organization: St. Louis Browns,718
+9a5c3f0d-4477-4b8b-9211-aa1159c52a36,St. Louis Cardinals,MLB-STL,Organization: St. Louis Cardinals,37451
+8c09925a-cd1e-4d0e-861c-6b9e12be9657,Tampa Bay Devil Rays,MLB-TBD,Organization: Tampa Bay Devil Rays,4304
+5732e240-f0f6-45bf-a2f7-353395320751,Tampa Bay Rays,MLB-TBR,Organization: Tampa Bay Rays,14298
+a0670dab-f528-40ce-8a65-67e0f6cf3301,Texas Rangers,MLB-TEX,Organization: Texas Rangers,27028
+8e65ae55-664c-4dd4-9684-a23187f1d31d,Toronto Blue Jays,MLB-TOR,Organization: Toronto Blue Jays,23127
+d2db61ed-f29d-4415-a339-ca4b9533e1d3,Washington Nationals,MLB-WAS,Organization: Washington Nationals,16617
+3aaa1afe-71ae-4463-b20d-9d070bddd928,Washington Senators,MLB-SEN,Organization: Washington Senators,1854
+baaff987-fed7-4425-a52c-40079f1b3a16,Yomiuri Giants,MLB-YOM,Organization: Yomiuri Giants,111

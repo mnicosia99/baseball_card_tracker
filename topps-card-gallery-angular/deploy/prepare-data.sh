@@ -3,7 +3,7 @@ set -eu
 
 deploy_directory=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 workspace_directory=$(CDPATH= cd -- "$deploy_directory/../../.." && pwd)
-source_file="$workspace_directory/Data-queries/cardsight_cards_named_attributes.json"
+source_file="$deploy_directory/data/cardsight_cards_named_attributes.json"
 data_directory="$deploy_directory/data"
 destination_file="$data_directory/cards.json"
 
